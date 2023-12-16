@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Inputs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    function getUserInput(promptText) {
+        return prompt(promptText);
+    }
+
+    function displayInput(buttonNumber) {
+        var input1 = parseFloat(getUserInput("Enter the 1st input:"));
+        var input2 = parseFloat(getUserInput("Enter the 2nd input:"));
+
+        var resultElement = document.getElementById('result');
+
+        if (isNaN(input1) || isNaN(input2)) {
+            resultElement.innerHTML = "Invalid input. Please enter valid numbers.";
+            return;
+        }
+
+        if (buttonNumber === 1) {
+            resultElement.innerHTML = "1st input: " + input1;
+        } else if (buttonNumber === 2) {
+            resultElement.innerHTML = "2nd input: " + input2;
+        }
+
+        if (input1 > input2) {
+            document.body.style.backgroundColor = 'lightblue';
+            resultElement.innerHTML += "<br>First input > Second input";
+        } else if (input2 > input1) {
+            document.body.style.backgroundColor = 'orange';
+            resultElement.innerHTML += "<br>Second input > First input";
+        } else {
+            document.body.style.backgroundColor = 'lightyellow';
+            resultElement.innerHTML += "<br>First input == Second input";
+        }
+    }
+</script>
+
+<button onclick="displayInput(1)">Click for 1st input</button>
+<button onclick="displayInput(2)">Click for 2nd input</button>
+
+<div id="result"></div>
+
+</body>
+</html>
